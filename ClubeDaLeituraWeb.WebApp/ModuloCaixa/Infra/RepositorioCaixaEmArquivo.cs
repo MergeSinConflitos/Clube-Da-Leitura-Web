@@ -1,7 +1,10 @@
-using ClubeDaLeituraWeb.WebApp.Compartilhado.Infra.Arquivos;
 using ClubeDaLeituraWeb.WebApp.ModuloCaixa.Dominio;
+using ClubeDaLeituraWeb.WebApp.Compartilhado.Infra;
+using ClubeDaLeituraWeb.WebApp.Compartilhado.Infra.Arquivos;
 
 namespace ClubeDaLeituraWeb.WebApp.ModuloCaixa.Infra;
+
+
 
 public class RepositorioCaixaEmArquivo : RepositorioBaseEmArquivo<Caixa>, IRepositorioCaixa
 {

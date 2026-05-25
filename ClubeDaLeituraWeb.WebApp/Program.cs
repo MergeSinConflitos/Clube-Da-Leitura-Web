@@ -1,6 +1,25 @@
+using ClubeDaLeituraWeb.WebApp.Compartilhado.Infra.Arquivos;
+using ClubeDaLeituraWeb.WebApp.ModuloCaixa.Dominio;
+using ClubeDaLeituraWeb.WebApp.ModuloCaixa.Infra;
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 // Configuração de Serviços
+builder.Services.AddScoped(provider =>
+{
+    ContextoJson contextoJson = new ContextoJson();
+
+    contextoJson.Carregar();
+
+    return contextoJson;
+});
+
+builder.Services.AddScoped<IRepositorioCaixa, RepositorioCaixaEmArquivo>();
+
 builder.Services.AddControllersWithViews().AddRazorOptions(options =>
 {
     // Resetar a configuração padrão do MVC
