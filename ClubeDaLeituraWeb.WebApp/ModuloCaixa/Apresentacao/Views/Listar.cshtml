@@ -1,0 +1,52 @@
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Listagem de Caixas";
+}
+
+@model List<ListarCaixasViewModel>;
+
+
+<a class="btn btn-outline-primary rounded-pill px-4 mb-3" asp-action="Cadastrar">Cadastrar Novo</a>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-primary border-start border-primary border-2 rounded-3" role="alert">
+        Nenhuma caixa cadastrada.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered align-middle bg-white">
+            <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Etiqueta</th>
+                    <th>Cor</th>
+                    <th>Dias de Empréstimo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (ListarCaixasViewModel c in Model)
+                {
+                    <tr>
+                        <td>@c.Id</td>
+                        <td>@c.Etiqueta</td>
+                        <td>@c.Cor</td>
+                        <td>@c.DiasDeEmprestimo</td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <a class="btn btn-outline-primary btn-sm rounded-pill px-3" asp-action="Editar"
+                                   asp-route-id="@c.Id">Editar</a>
+                                <a class="btn btn-outline-primary btn-sm rounded-pill px-3" asp-action="Excluir"
+                                   asp-route-id="@c.Id">Excluir</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
