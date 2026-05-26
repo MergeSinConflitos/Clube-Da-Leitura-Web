@@ -10,6 +10,7 @@ public sealed class ContextoJson
     private readonly string caminhoArquivo;
 
     public List<Caixa> Caixas { get; set; } = new List<Caixa>();
+    public List<Revista> Revistas { get; set; } = new List<Revista>();
 
     public ContextoJson()
     {
@@ -53,5 +54,6 @@ public sealed class ContextoJson
             return;
 
         Caixas = contextoSalvo.Caixas;
+        Revistas = contextoSalvo.Revistas;
     }
 }
