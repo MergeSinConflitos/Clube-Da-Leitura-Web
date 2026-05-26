@@ -6,10 +6,12 @@ namespace ClubeDaLeituraWeb.WebApp.ModuloCaixa.Apresentacao;
 public class CaixaController : Controller
 {
     private readonly IRepositorioCaixa repositorioCaixa;
+    private readonly IRepositorioRevista repositorioRevista;
 
-    public CaixaController(IRepositorioCaixa repositorioCaixa)
+    public CaixaController(IRepositorioCaixa repositorioCaixa, IRepositorioRevista repositorioRevista)
     {
         this.repositorioCaixa = repositorioCaixa;
+        this.repositorioRevista = repositorioRevista;
     }
 
     [HttpGet]
@@ -49,6 +51,15 @@ public class CaixaController : Controller
     [HttpPost]
     public ActionResult Cadastrar(CadastrarCaixaViewModel cadastrarVm)
     {
+        bool jaExiste = repositorioCaixa.SelecionarTodos().Any
+      (c => c.Etiqueta.ToLower() == cadastrarVm.Etiqueta.ToLower());
+
+        if (jaExiste)
+        {
+            ModelState.AddModelError(nameof(cadastrarVm.Etiqueta), "Essa etiqueta já está cadastrada ");
+        }
+
+
         if (!ModelState.IsValid)
             return View(cadastrarVm);
 
@@ -122,8 +133,17 @@ public class CaixaController : Controller
     {
         Caixa? caixa = repositorioCaixa.SelecionarPorId(excluirVm.Id);
 
+        if (repositorioRevista.ExisteRevistaNaCaixa(excluirVm.Id))
+        {
+            TempData["ERRO"] = "Nao é possivel excluir esta caixa,pois existem revistas vinculadas a ela";
+            return RedirectToAction(nameof(Listar));
+
+        }
+
         if (caixa != null)
             repositorioCaixa.Excluir(caixa);
+
+
 
         return RedirectToAction(nameof(Listar));
     }
