@@ -64,6 +64,15 @@ public class RevistaController : Controller
                );
         }
 
+        bool jaExiste = repositorioRevista.SelecionarTodos().Any
+        (r => r.Titulo.ToLower() == cadastrarRevistasView.Titulo.ToLower()
+        && r.NumeroDeEdicao == cadastrarRevistasView.NumeroDeEdicao);
+
+        if (jaExiste)
+        {
+            ModelState.AddModelError(nameof(cadastrarRevistasView.Titulo), "Essa edição já está cadastrada ");
+        }
+
         if (!ModelState.IsValid)
         {
             ViewBag.Caixas = CarregarCaixas();
