@@ -40,6 +40,7 @@ public class RevistaController : Controller
     [HttpGet]
     public ActionResult Cadastrar()
     {
+        ViewBag.Caixas = CarregarCaixas();
         CadastrarRevistasViewModel cadastrarRevistasViewModel = new CadastrarRevistasViewModel(
             string.Empty,
             0,
@@ -73,6 +74,9 @@ public class RevistaController : Controller
             cadastrarRevistasView.NumeroDeEdicao,
             cadastrarRevistasView.AnoDePublicacao,
             caixa);
+
+
+        repositorioRevista.Cadastrar(novaRevista);
 
         return RedirectToAction(nameof(Listar));
     }

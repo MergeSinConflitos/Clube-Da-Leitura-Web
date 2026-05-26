@@ -29,8 +29,6 @@ builder.Services.AddControllersWithViews().AddRazorOptions(options =>
     // Views dos módulos: /ModuloCaixa/Apresentacao/Views/Listar.cshtml
     options.ViewLocationFormats.Add("/Modulo{1}/Apresentacao/Views/{0}.cshtml");
 
-    options.ViewLocationFormats.Add("/Modulo{2}/Apresentacao/Views/{0}.cshtml");
-
     // Views compartilhadas: /Compartilhado/Apresentacao/Views/_Layout.cshtml
     options.ViewLocationFormats.Add("/Compartilhado/Apresentacao/Views/{0}.cshtml");
 });
