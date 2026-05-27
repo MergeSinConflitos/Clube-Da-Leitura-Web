@@ -44,8 +44,8 @@ public class RevistaController : Controller
         ViewBag.Caixas = CarregarCaixas();
         CadastrarRevistasViewModel cadastrarRevistasViewModel = new CadastrarRevistasViewModel(
             string.Empty,
-            0,
-            0,
+            1,
+            null,
             string.Empty
         );
 
@@ -82,7 +82,7 @@ public class RevistaController : Controller
         Revista novaRevista = new Revista(
             cadastrarRevistasView.Titulo,
             cadastrarRevistasView.NumeroDeEdicao,
-            cadastrarRevistasView.AnoDePublicacao,
+            (int)cadastrarRevistasView.AnoDePublicacao,
             caixa);
 
 

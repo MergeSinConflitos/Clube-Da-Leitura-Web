@@ -40,7 +40,7 @@ public record CadastrarRevistasViewModel(
     int NumeroDeEdicao,
 
     [AnoValidoAttribute]
-    int AnoDePublicacao,
+    int? AnoDePublicacao,
 
     [Required(ErrorMessage = "Informe um ID valido")]
     string CaixaId
