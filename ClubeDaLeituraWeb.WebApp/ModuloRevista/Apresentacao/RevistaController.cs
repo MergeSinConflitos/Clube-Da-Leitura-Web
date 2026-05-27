@@ -27,7 +27,8 @@ public class RevistaController : Controller
                 r.Titulo,
                 r.NumeroDeEdicao,
                 r.AnoDePublicacao,
-                r.Caixa.Etiqueta
+                r.Caixa.Etiqueta,
+                r.Status
             );
 
             listarVms.Add(viewModel);
