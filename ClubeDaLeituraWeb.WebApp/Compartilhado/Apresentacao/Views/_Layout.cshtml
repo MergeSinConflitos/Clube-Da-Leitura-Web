@@ -12,7 +12,7 @@
     <title>@ViewBag.Titulo - Clube da Leitura</title>
 </head>
 
-<body>
+<body >
     @* Barra de Navegação *@
     <nav class="navbar navbar-expand-lg bg-white border-bottom">
         <div class="container">
@@ -28,6 +28,9 @@
                     <a class="nav-link" asp-controller="Home" asp-action="Index">Início</a>
                     <a class="nav-link" asp-controller="Caixa" asp-action="Listar">Controle de Caixas</a>
                     <a class="nav-link" asp-controller="Revista" asp-action="Listar">Controle de Revistas</a>
+                    <a class="nav-link" asp-controller="Amigo" asp-action="Listar">Controle de Amigos</a>
+                    <a class="nav-link" asp-controller="Emprestimo" asp-action="Listar">Controle de Empréstimos</a>
+
                 </div>
             </div>
         </div>
