@@ -49,19 +49,17 @@ public class AmigoController : Controller
     [HttpPost]
     public ActionResult Cadastrar(CadastrarAmigoViewModel cadastrarVm)
     {   
-        //Validacion de duplicados
-        bool jaExiste = repositorioAmigo.SelecionarTodos().Any(
+        List<Amigo> amigos = repositorioAmigo.SelecionarTodos();
+
+        bool jaExiste = amigos.Any(
             a => a.Nome.ToLower() == cadastrarVm.Nome.ToLower() &&
-            a.NomeResponsavel.ToLower() == cadastrarVm.NomeResponsavel.ToLower() &&
             a.Telefone == cadastrarVm.Telefone
         );
 
-        if(jaExiste)
-        {
-            ModelState.AddModelError(nameof(cadastrarVm.Nome), "Já existe um amigo com o mesmo nome e telefone.");
-        }
+        if (jaExiste)
+            ModelState.AddModelError(string.Empty, "Já existe um amigo com o mesmo nome e telefone.");
 
-        if(!ModelState.IsValid)
+        if (!ModelState.IsValid)
             return View(cadastrarVm);
 
         Amigo novoAmigo = new Amigo(
@@ -72,7 +70,7 @@ public class AmigoController : Controller
 
         repositorioAmigo.Cadastrar(novoAmigo);
 
-        return RedirectToAction(nameof(Listar));    
+        return RedirectToAction(nameof(Listar));
     }
 
     [HttpGet]

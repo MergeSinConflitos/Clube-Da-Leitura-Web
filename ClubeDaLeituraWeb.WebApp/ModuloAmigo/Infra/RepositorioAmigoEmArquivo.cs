@@ -1,12 +1,15 @@
 using ClubeDaLeituraWeb.WebApp.Compartilhado.Infra.Arquivos;
 using ClubeDaLeituraWeb.WebApp.ModuloAmigo.Dominio;
 
-public class RepositorioAmigoEmArquivo : RepositorioBaseEmArquivo<Amigo>, IRepositorioAmigo
+namespace ClubeDaLeituraWeb.WebApp.ModuloAmigo.Infra
 {
-    public RepositorioAmigoEmArquivo(ContextoJson contexto) : base(contexto) { }
-
-    protected override List<Amigo> CarregarRegistros()
+    public class RepositorioAmigoEmArquivo : RepositorioBaseEmArquivo<Amigo>, IRepositorioAmigo
     {
-        return contexto.Amigos;
+        public RepositorioAmigoEmArquivo(ContextoJson contexto) : base(contexto) { }
+
+        protected override List<Amigo> CarregarRegistros()
+        {
+            return contexto.Amigos;
+        }
     }
 }
