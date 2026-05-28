@@ -4,8 +4,6 @@ using ClubeDaLeituraWeb.WebApp.ModuloEmprestimo.Dominio;
 using ClubeDaLeituraWeb.WebApp.ModuloRevista.Dominio;
 
 
-
-
 public record ListarEmprestimosViewModel(
     string Id,
     string NomeAmigo,
@@ -22,7 +20,7 @@ public record CadastrarEmprestimoViewModel(
 
     [Required(ErrorMessage = "O campo \"Revista\" deve ser preenchido.")]
     string RevistaId,
-    
+
 
     List<Amigo>? Amigos,
     List<Revista>? Revistas

@@ -1,0 +1,53 @@
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Cadastro de Empréstimo";
+}
+
+@model CadastrarEmprestimoViewModel;
+
+<div class="container py-4">
+    <h1 class="display-6 fw-semibold text-primary mb-4">@ViewBag.Titulo</h1>
+
+    <form class="card border-primary-subtle shadow-sm mx-auto p-4" style="max-width: 620px;" asp-action="Cadastrar"
+          method="post">
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger" role="alert">
+                @foreach (var erro in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <p class="mb-0">@erro.ErrorMessage</p>
+                }
+            </div>
+        }
+
+        <div class="mb-3">
+            <label asp-for="AmigoId" class="form-label fw-semibold text-primary text-uppercase small">Amigo</label>
+            <select asp-for="AmigoId" class="form-select">
+                <option value="">Selecione um amigo</option>
+                @foreach (var amigo in Model.Amigos!)
+                {
+                    <option value="@amigo.Id">@amigo.Nome</option>
+                }
+            </select>
+            <span asp-validation-for="AmigoId" class="text-danger small fw-semibold"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="RevistaId" class="form-label fw-semibold text-primary text-uppercase small">Revista</label>
+            <select asp-for="RevistaId" class="form-select">
+                <option value="">Selecione uma revista</option>
+                @foreach (var revista in Model.Revistas!)
+                {
+                    <option value="@revista.Id">@revista.Titulo</option>
+                }
+            </select>
+            <span asp-validation-for="RevistaId" class="text-danger small fw-semibold"></span>
+        </div>
+
+        <div class="d-flex justify-content-end gap-2 mt-4">
+            <a class="btn btn-outline-primary rounded-pill px-4" asp-action="Listar">Voltar</a>
+            <button class="btn btn-primary rounded-pill px-4" type="submit">Confirmar</button>
+        </div>
+    </form>
+</div>

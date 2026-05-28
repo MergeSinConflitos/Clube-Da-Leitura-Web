@@ -53,13 +53,13 @@ public class Emprestimo : EntidadeBase<Emprestimo>
     {
         Abertura = DateTime.Now;
         Status = StatusEmprestimo.Aberto;
-        Revista.Emprestar();
+        //Revista.Emprestar(); ver modulo revista
     }
 
     public void Concluir()
     {
         Status = StatusEmprestimo.Concluido;
-        Revista.Devolver();
+        //Revista.Devolver();
     }
 
     public override void AtualizarDados(Emprestimo entidadeAtualizada)
