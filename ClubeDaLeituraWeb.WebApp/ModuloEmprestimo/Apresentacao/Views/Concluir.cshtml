@@ -1,0 +1,37 @@
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Confirmar Devolução";
+}
+
+@model ConcluirEmprestimoViewModel;
+
+<form class="card border-primary-subtle shadow-sm mx-auto p-4" style="max-width: 620px;" asp-action="Concluir"
+      method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label class="form-label fw-semibold text-primary text-uppercase small">Amigo</label>
+        <input asp-for="NomeAmigo" type="text" class="form-control" disabled>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-semibold text-primary text-uppercase small">Revista</label>
+        <input asp-for="TituloRevista" type="text" class="form-control" disabled>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-semibold text-primary text-uppercase small">Data de Abertura</label>
+        <input asp-for="Abertura" type="text" class="form-control" value="@Model.Abertura.ToShortDateString()" disabled>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-semibold text-primary text-uppercase small">Devolução Prevista</label>
+        <input asp-for="ConclusaoPrevista" type="text" class="form-control" value="@Model.ConclusaoPrevista.ToShortDateString()" disabled>
+    </div>
+
+    <div class="d-flex justify-content-end gap-2 mt-4">
+        <a class="btn btn-outline-primary rounded-pill px-4" asp-action="Listar">Voltar</a>
+        <button class="btn btn-success rounded-pill px-4" type="submit">Confirmar Devolução</button>
+    </div>
+</form>

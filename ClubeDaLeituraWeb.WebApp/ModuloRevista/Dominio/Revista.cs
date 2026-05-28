@@ -70,7 +70,18 @@ public class Revista : EntidadeBase<Revista>
         AnoDePublicacao = revistaAtualizada.AnoDePublicacao;
         Caixa = revistaAtualizada.Caixa;
     }
+
+    public void Emprestar()
+    {
+        Status = StatusRevista.Emprestada; //cambia status al emprestar
+    }
+
+    public void Devolver()
+    {
+        Status = StatusRevista.Disponivel; //cambia status al devolver
+    }
 }
+
 
 public enum StatusRevista
 {

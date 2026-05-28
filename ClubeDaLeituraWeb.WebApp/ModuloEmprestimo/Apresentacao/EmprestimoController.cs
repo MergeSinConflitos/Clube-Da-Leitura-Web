@@ -118,6 +118,8 @@ public class EmprestimoController : Controller
         Emprestimo novoEmprestimo = new Emprestimo(revista, amigo);
         novoEmprestimo.Abrir();
 
+        repositorioRevista.Editar(revista.Id, revista);  // Atualiza o status da revista para "Emprestada"
+        
         repositorioEmprestimo.Cadastrar(novoEmprestimo);
 
         return RedirectToAction(nameof(Listar));
@@ -154,6 +156,8 @@ public class EmprestimoController : Controller
         }
 
         emprestimo.Concluir();
+
+        repositorioRevista.Editar(emprestimo.Revista.Id, emprestimo.Revista); // Atualiza o status da revista para "Disponível"
 
         repositorioEmprestimo.Editar(emprestimo.Id, emprestimo);
 
