@@ -1,4 +1,5 @@
 using ClubeDaLeituraWeb.WebApp.Compartilhado.Dominio;
+using ClubeDaLeituraWeb.WebApp.ModuloEmprestimo.Dominio;
 
 namespace ClubeDaLeituraWeb.WebApp.ModuloAmigo.Dominio;
 
@@ -7,7 +8,7 @@ public class Amigo : EntidadeBase<Amigo>
     public string Nome { get; set; } = string.Empty;
     public string NomeResponsavel { get; set; } = string.Empty;
     public string Telefone { get; set; } = string.Empty;
-    //public List<Emprestimo> Emprestimos { get; set; } = new List<Emprestimo>(); 
+    public List<Emprestimo> Emprestimos { get; set; } = new List<Emprestimo>(); 
 
     public Amigo()
     {

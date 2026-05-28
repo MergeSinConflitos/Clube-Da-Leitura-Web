@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using ClubeDaLeituraWeb.WebApp.ModuloRevista.Dominio;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
 
 public class AnoValidoAttribute : ValidationAttribute

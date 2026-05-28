@@ -1,6 +1,8 @@
 using ClubeDaLeituraWeb.WebApp.Compartilhado.Dominio;
 using ClubeDaLeituraWeb.WebApp.ModuloCaixa.Dominio;
 
+namespace ClubeDaLeituraWeb.WebApp.ModuloRevista.Dominio;
+
 public class Revista : EntidadeBase<Revista>
 {
     public string Titulo { get; set; }
