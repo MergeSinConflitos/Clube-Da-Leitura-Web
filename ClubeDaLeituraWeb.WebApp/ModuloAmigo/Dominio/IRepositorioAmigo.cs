@@ -1,4 +1,3 @@
-using ClubeDaLeitura.WebApp.ModuloAmigo.Dominio;
 using ClubeDaLeituraWeb.WebApp.Compartilhado.Infra;
 
 

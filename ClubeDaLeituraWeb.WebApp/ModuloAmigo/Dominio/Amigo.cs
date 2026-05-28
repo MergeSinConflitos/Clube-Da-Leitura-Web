@@ -1,6 +1,6 @@
 using ClubeDaLeituraWeb.WebApp.Compartilhado.Dominio;
 
-namespace ClubeDaLeitura.WebApp.ModuloAmigo.Dominio;
+namespace ClubeDaLeituraWeb.WebApp.ModuloAmigo.Dominio;
 
 public class Amigo : EntidadeBase<Amigo>
 {
